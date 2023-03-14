@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:20.04
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y cmake g++ git && rm -rf /var/lib/apt/lists/*
 ENV CPM_SOURCE_CACHE=/var/cache/cpm
 COPY cmake /src/cmake
