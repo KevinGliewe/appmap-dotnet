@@ -3,3 +3,5 @@
 /cpm_modules
 .DS_Store
 /out
+/launcher
+/CLRInstrumentationEngine*
