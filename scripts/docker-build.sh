@@ -28,7 +28,13 @@ build_appmap() {
   docker rm -v $id > /dev/null
 }
 
+build_launcher() {
+  docker run --rm -v $BASEDIR:/src -w /src mcr.microsoft.com/dotnet/sdk:6.0 dotnet publish -c release -o out launcher; chown -R $(id -u):$(id -g) out
+}
+
 [ -f $BASEDIR/out/libInstrumentationEngine.so ] || build_clrie
 build_appmap
-cp config/* out
-dotnet pack -c release launcher
+
+cp $BASEDIR/config/* $BASEDIR/out
+
+build_launcher
